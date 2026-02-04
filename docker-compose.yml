@@ -66,6 +66,9 @@ services:
     networks:
       - unifi-net
 
+    ports:
+      - "8090:8080"  # External port 8090, internal port 8080
+
 networks:
   unifi-net:
     driver: bridge
