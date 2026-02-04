@@ -62,7 +62,7 @@ services:
       
     volumes:
       - ./output:/app/output
-      - ./config:/app/config:ro
+      - ./config:/app/config
     networks:
       - unifi-net
 
