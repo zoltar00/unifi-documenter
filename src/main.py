@@ -82,7 +82,7 @@ class UniFiDocumenter:
             # Process backup
             with UniFiBackupProcessor(self.config) as processor:
                 backup_result = processor.process_backup()
-                print (backup_result)
+                logger.info(backup_result)
                 
                 if not backup_result:
                     logger.error("Backup processing failed")
