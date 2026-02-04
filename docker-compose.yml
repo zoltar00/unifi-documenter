@@ -1,12 +1,10 @@
-version: '3.8'
-
 services:
   unifi-documenter:
     # Use pre-built image (recommended)
-    image: ghcr.io/loryanstrant/unifi-documenter:latest
+    #image: ghcr.io/loryanstrant/unifi-documenter:latest
     
     # OR build locally (comment out 'image' line above and uncomment below)
-    # build: .
+    build: .
     
     container_name: unifi-documenter
     restart: unless-stopped
@@ -28,21 +26,21 @@ services:
     
     environment:
       # Schedule Configuration
-      - SCHEDULE_FREQUENCY=daily  # daily, weekly, monthly
-      - SCHEDULE_TIME=02:00       # HH:MM format (24-hour)
-      - SCHEDULE_DAY=1            # For weekly (1=Monday, 7=Sunday), for monthly (1-31)
-      - TIMEZONE=UTC              # Timezone for scheduling
+      - SCHEDULE_FREQUENCY=${SCHEDULE_FREQUENCY}  # daily, weekly, monthly
+      - SCHEDULE_TIME=${SCHEDULE_TIME}       # HH:MM format (24-hour)
+      - SCHEDULE_DAY=${SCHEDULE_DAY}            # For weekly (1=Monday, 7=Sunday), for monthly (1-31)
+      - TIMEZONE=${TIMEZONE}              # Timezone for scheduling
       
       # UDM Configuration
-      - UDM_IP=192.168.1.1
-      - UDM_ROOT_PASSWORD=your_password_here
-      - REMOTE_BACKUP_DIR=/usr/lib/unifi/data/backup/autobackup
+      - UDM_IP=${UDM_IP}
+      - UDM_ROOT_PASSWORD=${UDM_ROOT_PASSWORD}
+      - REMOTE_BACKUP_DIR=${REMOTE_BACKUP_DIR}
       
       # AI Configuration
-      - AI_PROVIDER=openai        # openai, ollama, azure-openai, custom
-      - AI_API_URL=https://api.openai.com/v1
-      - AI_API_KEY=your_openai_api_key_here
-      - AI_MODEL=gpt-4o-mini
+      - AI_PROVIDER=${AI_PROVIDER}        # openai, ollama, azure-openai, custom
+      - AI_API_URL=${AI_API_URL}
+      - AI_API_KEY=${AI_API_KEY}
+      - AI_MODEL=${AI_MODEL}
       
       # Optional Ollama Configuration (if AI_PROVIDER=ollama)
       # - OLLAMA_URL=http://host.docker.internal:11434
@@ -54,9 +52,13 @@ services:
       # - AZURE_OPENAI_DEPLOYMENT=your-deployment-name
       
       # Output Configuration
-      - OUTPUT_FORMAT=markdown    # markdown, json, both
-      - MAX_DOCUMENT_SIZE=50000   # Maximum characters per document chunk
-      - INCLUDE_RAW_DATA=false    # Include raw JSON in output
+      - OUTPUT_FORMAT=${OUTPUT_FORMAT}    # markdown, json, both
+      - MAX_DOCUMENT_SIZE=${MAX_DOCUMENT_SIZE}   # Maximum characters per document chunk
+      - INCLUDE_RAW_DATA=${INCLUDE_RAW_DATA}    # Include raw JSON in output
+
+      #run mode
+      - RUN_MODE=${RUN_MODE}              # normal, test, debug
+      - RUN_IMMEDIATELY=${RUN_IMMEDIATELY}
       
     volumes:
       - ./output:/app/output
