@@ -56,7 +56,7 @@ class OpenAIProvider(AIProvider):
                     {"role": "system", "content": "You are an expert network administrator and documentation specialist. Analyze the provided UniFi configuration data and create clear, comprehensive documentation."},
                     {"role": "user", "content": prompt}
                 ],
-                max_tokens=max_tokens,
+                max_completion_tokens=max_tokens,
                 temperature=0.1
             )
             
@@ -103,7 +103,7 @@ class AzureOpenAIProvider(AIProvider):
                     {"role": "system", "content": "You are an expert network administrator and documentation specialist. Analyze the provided UniFi configuration data and create clear, comprehensive documentation."},
                     {"role": "user", "content": prompt}
                 ],
-                max_tokens=max_tokens,
+                max_completion_tokens=max_tokens,
                 temperature=0.1
             )
             
@@ -184,7 +184,7 @@ class CustomProvider(AIProvider):
                     {"role": "system", "content": "You are an expert network administrator and documentation specialist. Analyze the provided UniFi configuration data and create clear, comprehensive documentation."},
                     {"role": "user", "content": prompt}
                 ],
-                "max_tokens": max_tokens,
+                "max_completion_tokens": max_tokens,
                 "temperature": 0.1
             }
             
