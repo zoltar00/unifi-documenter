@@ -27,6 +27,8 @@ class UniFiBackupAnalyzer:
     @log_execution_time
     def analyze_backup_data(self, backup_result: Dict) -> Optional[Dict]:
         """Analyze processed backup data and generate documentation"""
+        logger.info("Analyze processed backup data and generate documentation")
+        
         if not self.ai_manager.is_available():
             logger.error("AI manager not available for analysis")
             return None
