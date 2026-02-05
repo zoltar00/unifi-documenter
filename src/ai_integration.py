@@ -104,7 +104,7 @@ class AzureOpenAIProvider(AIProvider):
                     {"role": "user", "content": prompt}
                 ],
                 max_completion_tokens=max_tokens,
-                temperature=0.1
+                #temperature=0.1
             )
             
             return response.choices[0].message.content
