@@ -35,6 +35,10 @@ class UniFiBackupAnalyzer:
             output_folder = backup_result['output_folder']
             document_files = backup_result['document_files']
             timestamp = backup_result['timestamp']
+
+            logger.info("Output folder for analysis: %s", output_folder)
+            logger.info("Documents to analyze: %d", len(document_files))
+            logger.info("Analysis started at: %s", timestamp)
             
             # Create analysis output directory
             analysis_dir = os.path.join(output_folder, 'analysis')
