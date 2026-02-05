@@ -90,6 +90,7 @@ class UniFiDocumenter:
             # Analyze backup data
             logger.info("Starting UniFiBackupAnalyzer")
             analyzer = UniFiBackupAnalyzer(self.config)
+            logger.info(analyzer)
             analysis_result = analyzer.analyze_backup_data(backup_result)
             
             if not analysis_result:
